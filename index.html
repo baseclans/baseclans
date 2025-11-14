@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BaseClans Map</title>
+  <style>
+    body {
+      margin: 0;
+      background: #1b1b1b;
+      overflow: hidden;
+      font-family: sans-serif;
+    }#map {
+  position: relative;
+  width: 2000px;
+  height: 2000px;
+  background: url('https://i.imgur.com/4v7A1OY.png') repeat; /* Textured grass */
+  transform: scale(0.6);
+  transform-origin: top left;
+}
+
+.building {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.building:hover {
+  transform: scale(1.1);
+}
+
+  </style>
+</head>
+<body>
+  <div id="map"></div>  <script>
+    const map = document.getElementById("map");
+
+    const buildings = [
+      { name: "Town Hall", x: 900, y: 900, img: "https://i.imgur.com/QkQy4V1.png" },
+      { name: "Gold Mine", x: 1100, y: 950, img: "https://i.imgur.com/Z0wM3eC.png" },
+      { name: "Elixir Pump", x: 850, y: 1100, img: "https://i.imgur.com/kCoE3ee.png" },
+      { name: "Barrack", x: 1000, y: 1200, img: "https://i.imgur.com/sA5S0Ks.png" }
+    ];
+
+    buildings.forEach(b => {
+      const el = document.createElement("div");
+      el.className = "building";
+      el.style.left = b.x + "px";
+      el.style.top = b.y + "px";
+      el.style.backgroundImage = `url(${b.img})`;
+      el.title = b.name;
+      map.appendChild(el);
+    });
+  </script></body>
+</html>
